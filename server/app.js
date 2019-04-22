@@ -4,8 +4,10 @@ import compression from 'compression';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import responseTime from 'response-time';
+import Loadable from 'react-loadable';
+import createStore from './helpers/create-store';
 
-import { renderServerSideApp } from './renderServerSideApp';
+import { renderApp } from './renderServerSideApp';
 
 // This export is used by our initialization code in /scripts
 export const app = express();
@@ -39,4 +41,18 @@ app.use(
   })
 );
 
-app.use(renderServerSideApp);
+// app.use(renderServerSideApp);
+
+app.get('/', (req, res) => {
+  Loadable.preloadAll().then(() => {
+    const store = createStore();
+    return renderApp(req, res, store);
+  });
+});
+
+app.get('/about', (req, res) => {
+  Loadable.preloadAll().then(() => {
+    const store = createStore();
+    return renderApp(req, res, store);
+  });
+});

@@ -8,21 +8,21 @@ import { getBundles } from 'react-loadable/webpack';
 
 import App from '../src/App';
 // import configureStore from '../src/utils/configureStore';
-import { fetchDataForRender } from './fetchDataForRender';
+// import { fetchDataForRender } from './fetchDataForRender';
 import { indexHtml } from './indexHtml';
 import stats from '../build/react-loadable.json';
-import createStore from './helpers/create-store';
+// import createStore from './helpers/create-store';
 
-export const renderServerSideApp = (req, res) => {
-  // const store = configureStore(undefined, { logger: false });
-  const store = createStore();
+// export const renderServerSideApp = (req, res) => {
+//   // const store = configureStore(undefined, { logger: false });
+//   const store = createStore();
 
-  Loadable.preloadAll()
-    .then(() => fetchDataForRender(req, store))
-    .then(() => renderApp(req, res, store));
-};
+//   Loadable.preloadAll()
+//     .then(() => fetchDataForRender(req, store))
+//     .then(() => renderApp(req, res, store));
+// };
 
-function renderApp(req, res, store) {
+export const renderApp = (req, res, store) => {
   const context = {};
   const modules = [];
   const markup = ReactDOMServer.renderToString(
@@ -47,4 +47,4 @@ function renderApp(req, res, store) {
 
     res.status(200).send(fullMarkup);
   }
-}
+};
