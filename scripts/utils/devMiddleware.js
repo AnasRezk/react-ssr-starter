@@ -5,27 +5,27 @@ import webpackHotMiddleware from 'webpack-hot-middleware';
 import config from '../../config/webpack.config.dev';
 
 export const applyDevMiddleware = app => {
-  const compiler = webpack(config);
+    const compiler = webpack(config);
 
-  app.use(
-    webpackDevMiddleware(compiler, {
-      hot: true,
-      publicPath: config.output.publicPath,
-      progress: true,
-      stats: {
-        colors: true,
-        assets: true,
-        chunks: false,
-        modules: false,
-        hash: false
-      }
-    })
-  );
+    app.use(
+        webpackDevMiddleware(compiler, {
+            hot: true,
+            publicPath: config.output.publicPath,
+            progress: true,
+            stats: {
+                colors: true,
+                assets: true,
+                chunks: false,
+                modules: false,
+                hash: false
+            }
+        })
+    );
 
-  app.use(
-    webpackHotMiddleware(compiler, {
-      path: '/__webpack_hmr',
-      heartbeat: 4000
-    })
-  );
+    app.use(
+        webpackHotMiddleware(compiler, {
+            path: '/__webpack_hmr',
+            heartbeat: 4000
+        })
+    );
 };
