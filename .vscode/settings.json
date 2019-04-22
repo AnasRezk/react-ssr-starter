@@ -1,0 +1,36 @@
+{
+    "editor.tabSize": 4,
+    "files.autoSave": "off",
+    "editor.formatOnSave": false,
+    "[javascript]": {
+        "editor.formatOnSave": true,
+        "editor.formatOnPaste": true
+    },
+    "[javascriptreact]": {
+        "editor.formatOnSave": true,
+        "editor.formatOnPaste": true
+    },
+    "[typescript]": {
+        "editor.formatOnSave": true,
+        "editor.formatOnPaste": true
+    },
+    "[typescriptreact]": {
+        "editor.formatOnSave": true,
+        "editor.formatOnPaste": true
+    },
+    "[json]": {
+        "editor.formatOnSave": true,
+        "editor.formatOnPaste": true
+    },
+    "[markdown]": {
+        "editor.formatOnSave": true,
+        "editor.formatOnPaste": true
+    },
+
+    "workbench.colorCustomizations": {
+        "titleBar.activeBackground": "#874456",
+        "titleBar.activeForeground": "#ffffff",
+        "titleBar.inactiveBackground": "#874456",
+        "titleBar.inactiveForeground": "#cccccc"
+    }
+}
