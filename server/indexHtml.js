@@ -9,7 +9,7 @@ if (NODE_ENV === 'production') {
 } else {
     assetManifest = {
         'center.js': '/center.bundle.js',
-        'growth.js': '/growth.bundle.js'
+        'guest.js': '/guest.bundle.js'
     };
 }
 

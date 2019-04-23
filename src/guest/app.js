@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-const GrowthApp = () => (
+const GuestApp = () => (
     <div className="app">
         <nav>
             <NavLink exact to="/" activeClassName="active">
@@ -12,10 +12,10 @@ const GrowthApp = () => (
             </NavLink>
         </nav>
 
-        <div className="main">Growth App Is New</div>
+        <div className="main">guest App Is New</div>
 
         <footer />
     </div>
 );
 
-export default GrowthApp;
+export default GuestApp;

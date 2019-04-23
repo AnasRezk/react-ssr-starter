@@ -7,7 +7,7 @@ import Loadable from 'react-loadable';
 import { getBundles } from 'react-loadable/webpack';
 
 import CenterApp from '../src/center/App';
-import GrowthApp from '../src/growth/app';
+import GuestApp from '../src/guest/app';
 // import configureStore from '../src/utils/configureStore';
 // import { fetchDataForRender } from './fetchDataForRender';
 import { indexHtml } from './indexHtml';
@@ -29,8 +29,8 @@ export const renderApp = (req, res, store, basename) => {
     const markup = ReactDOMServer.renderToString(
         <Loadable.Capture report={moduleName => modules.push(moduleName)}>
             <Provider store={store}>
-                <StaticRouter basename={basename} location={req.url} context={context}>
-                    {basename === 'center' ? <CenterApp /> : <GrowthApp />}
+                <StaticRouter basename={basename !== 'guest' ? basename : ''} location={req.url} context={context}>
+                    {basename === 'center' ? <CenterApp /> : <GuestApp />}
                 </StaticRouter>
             </Provider>
         </Loadable.Capture>

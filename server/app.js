@@ -13,7 +13,7 @@ import { renderApp } from './renderServerSideApp';
 export const app = express();
 const { PUBLIC_URL = '' } = process.env;
 const CENTER_BASE_NAME = 'center';
-const GROWTH_BASE_NAME = 'growth';
+const Guest_BASE_NAME = 'guest';
 
 app.use(compression());
 app.use(helmet());
@@ -59,9 +59,10 @@ app.get('/center/about', (req, res) => {
     });
 });
 
-app.get('/growth/', (req, res) => {
+// Root is Guest App
+app.get('/', (req, res) => {
     Loadable.preloadAll().then(() => {
         const store = createStore();
-        return renderApp(req, res, store, GROWTH_BASE_NAME);
+        return renderApp(req, res, store, Guest_BASE_NAME);
     });
 });
