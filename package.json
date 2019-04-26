@@ -11,7 +11,9 @@
     "format": "prettier --write \"src/**/*.{js,json,css,md}\"",
     "docker:build": "docker build --rm -t cullenjett/react-ssr-boilerplate .",
     "docker:start": "docker run --rm -it -p 3000:3000 cullenjett/react-ssr-boilerplate",
-    "docker": "npm run docker:build && npm run docker:start"
+    "docker": "npm run docker:build && npm run docker:start",
+    "dev:build": "docker build -f Dockerfile.dev -t anas/ssr .",
+    "dev:start": "docker run -p 3000:3000 -v /app/node_modules -v $(pwd):/app anas/ssr"
   },
   "husky": {
     "hooks": {
@@ -105,7 +107,7 @@
     ],
     "setupFiles": [
       "<rootDir>/config/jest/browserMocks.js",
-      "<rootDir>/config/polyfills.js"
+      "<rootDir>/src/app/polyfills.js"
     ],
     "testMatch": [
       "<rootDir>/src/**/__tests__/**/*.js?(x)",
