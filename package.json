@@ -12,8 +12,8 @@
     "docker:build": "docker build --rm -t cullenjett/react-ssr-boilerplate .",
     "docker:start": "docker run --rm -it -p 3000:3000 cullenjett/react-ssr-boilerplate",
     "docker": "npm run docker:build && npm run docker:start",
-    "dev:build": "docker build -f Dockerfile.dev -t anas/ssr .",
-    "dev:start": "docker run -p 3000:3000 -v /app/node_modules -v $(pwd):/app anas/ssr"
+    "dev:build": "docker build -f Dockerfile.dev -t anasrezk/ssr .",
+    "dev:start": "docker run -p 3000:3000 -v /app/node_modules -v $(pwd):/app anasrezk/ssr"
   },
   "husky": {
     "hooks": {
