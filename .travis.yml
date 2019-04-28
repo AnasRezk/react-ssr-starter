@@ -3,6 +3,7 @@ services:
   - docker
 
 before_install:
+  - gem update --system
   - docker build -t anasrezk/react-ssr-starter -f Dockerfile.dev .
 
 scripts:
