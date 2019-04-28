@@ -5,6 +5,21 @@ install: skip
 
 script: skip
 
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "react-ssr-starter"
+  env: "ReactSsrStarter-env"
+  bucket_name: "elasticbeanstalk-us-east-2-696433197758"
+  bucket_path: "react-ssr-starter"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_id:
+    secure: "$AWS_SECRET_KEY"
+
+
+
 # before_install:
 #   - docker build -t anasrezk/react-ssr-starter -f Dockerfile.dev .
 
