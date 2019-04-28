@@ -1,5 +1,5 @@
 {
-  "name": "react-ssr-boilerplate",
+  "name": "react-ssr-starter",
   "version": "3.0.1",
   "private": true,
   "scripts": {
@@ -9,8 +9,8 @@
     "start:prod": "node scripts/startProd.js",
     "lint": "eslint src/**/*.js",
     "format": "prettier --write \"src/**/*.{js,json,css,md}\"",
-    "docker:build": "docker build --rm -t cullenjett/react-ssr-boilerplate .",
-    "docker:start": "docker run --rm -it -p 3000:3000 cullenjett/react-ssr-boilerplate",
+    "docker:build": "docker build --rm -t cullenjett/react-ssr-starter .",
+    "docker:start": "docker run --rm -it -p 3000:3000 cullenjett/react-ssr-starter",
     "docker": "npm run docker:build && npm run docker:start",
     "dev:build": "docker build -f Dockerfile.dev -t anasrezk/ssr .",
     "dev:start": "docker run -p 3000:3000 -v /app/node_modules -v $(pwd):/app anasrezk/ssr"
