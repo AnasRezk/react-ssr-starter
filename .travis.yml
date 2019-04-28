@@ -1,9 +1,12 @@
 sudo: required
 services:
   - docker
+install: skip
 
-before_install:
-  - docker build -t anasrezk/react-ssr-starter -f Dockerfile.dev .
+script: skip
 
-scripts:
-  - docker run anasrezk/react-ssr-starter npm run test -- --coverage
+# before_install:
+#   - docker build -t anasrezk/react-ssr-starter -f Dockerfile.dev .
+
+# scripts:
+#   - docker run anasrezk/react-ssr-starter npm run test -- --coverage
