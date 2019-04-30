@@ -60,7 +60,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.(js|jsx)$/,
+                test: /\.(js|jsx|ts|tsx)$/,
                 enforce: 'pre',
                 use: [
                     {
@@ -73,7 +73,7 @@ module.exports = {
                 include: resolvePath('../src')
             },
             {
-                test: /\.(js|jsx)$/,
+                test: /\.(js|jsx|ts|tsx)$/,
                 include: resolvePath('../src'),
                 loader: 'babel-loader',
                 options: {
@@ -133,6 +133,9 @@ module.exports = {
                 ]
             }
         ]
+    },
+    resolve: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx']
     },
     optimization: {
         minimizer: [
