@@ -1,5 +1,4 @@
 const path = require('path');
-const autoprefixer = require('autoprefixer');
 const webpack = require('webpack');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const eslintFormatter = require('react-dev-utils/eslintFormatter');
@@ -22,7 +21,6 @@ const entryFiles = fg.sync(path.join(javascriptSrcPath, entryPointsGlobPattern))
 module.exports = {
     mode: 'development',
     devtool: 'cheap-module-source-map',
-    // entry: ['webpack-hot-middleware/client?path=/__webpack_hmr&reload=true', resolvePath('../src/index.js')],
     entry: (function() {
         const entry = {};
 
@@ -72,58 +70,6 @@ module.exports = {
                 options: {
                     cacheDirectory: true
                 }
-            },
-            {
-                test: /\.s?css$/,
-                exclude: [resolvePath('../src/styles')],
-                use: [
-                    'style-loader',
-                    {
-                        loader: 'css-loader',
-                        options: {
-                            camelCase: true,
-                            modules: true
-                        }
-                    },
-                    {
-                        loader: 'postcss-loader',
-                        options: {
-                            ident: 'postcss',
-                            plugins: () => [
-                                require('postcss-flexbugs-fixes'),
-                                autoprefixer({
-                                    browsers: ['last 2 versions', 'not ie < 11'],
-                                    flexbox: 'no-2009'
-                                })
-                            ]
-                        }
-                    },
-                    'sass-loader',
-                    'import-glob-loader'
-                ]
-            },
-            {
-                test: /\.s?css$/,
-                include: [resolvePath('../src/styles')],
-                use: [
-                    'style-loader',
-                    'css-loader',
-                    {
-                        loader: 'postcss-loader',
-                        options: {
-                            ident: 'postcss',
-                            plugins: () => [
-                                require('postcss-flexbugs-fixes'),
-                                autoprefixer({
-                                    browsers: ['last 2 versions', 'not ie < 11'],
-                                    flexbox: 'no-2009'
-                                })
-                            ]
-                        }
-                    },
-                    'sass-loader',
-                    'import-glob-loader'
-                ]
             }
         ]
     },

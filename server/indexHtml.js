@@ -27,18 +27,6 @@ const preloadScripts = (bundles, basename) => {
         .join('');
 };
 
-const cssLinks = () => {
-    if (NODE_ENV !== 'production') {
-        return '';
-    }
-
-    return Object.keys(assetManifest)
-        .filter(file => file.match(/\.css$/))
-        .map(cssFile => assetManifest[cssFile])
-        .map(cssFilePath => `<link rel="stylesheet" href="${cssFilePath}">`)
-        .join('');
-};
-
 const jsScripts = (bundles, basename) => {
     const mainJS = assetManifest[`${basename}.js`];
     const bundleFilePaths = bundles
@@ -62,7 +50,6 @@ export const indexHtml = ({ helmet, initialState, markup, bundles, basename }) =
         ${helmet.meta.toString()}
         ${preloadScripts(bundles, basename)}
         ${helmet.link.toString()}
-        ${cssLinks()}
         ${helmet.style.toString()}
         ${helmet.script.toString()}
         ${helmet.noscript.toString()}

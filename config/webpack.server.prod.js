@@ -32,34 +32,8 @@ module.exports = {
                 exclude: /node_modules/,
                 loader: 'babel-loader',
                 options: {
-                    plugins: [
-                        [
-                            'css-modules-transform',
-                            {
-                                camelCase: true,
-                                extensions: ['.css', '.scss'],
-                                generateScopedName: '[hash:base64]',
-                                ignore: 'src/styles'
-                            }
-                        ],
-                        'dynamic-import-node'
-                    ]
+                    plugins: ['dynamic-import-node']
                 }
-            },
-            {
-                test: /\.s?css$/,
-                exclude: [resolvePath('../src/styles')],
-                use: [
-                    {
-                        loader: 'css-loader',
-                        options: {
-                            modules: true,
-                            camelCase: true
-                        }
-                    },
-                    'sass-loader',
-                    'import-glob-loader'
-                ]
             }
         ]
     },

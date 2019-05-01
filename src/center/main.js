@@ -6,8 +6,6 @@ import Loadable from 'react-loadable';
 import store from '../app/store/index';
 import App from './App';
 
-import '../styles/index.scss';
-
 Loadable.preloadReady().then(() => {
     ReactDOM.hydrate(
         <Provider store={store}>

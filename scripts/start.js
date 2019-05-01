@@ -3,17 +3,7 @@ process.env.NODE_ENV = 'development';
 process.env.PUBLIC_URL = process.env.PUBLIC_URL || '';
 
 require('@babel/register')({
-    plugins: [
-        [
-            'css-modules-transform',
-            {
-                camelCase: true,
-                extensions: ['.css', '.scss'],
-                generateScopedName: '[hash:base64]'
-            }
-        ],
-        'dynamic-import-node'
-    ],
+    plugins: ['dynamic-import-node'],
     extensions: ['.js', '.jsx', '.ts', '.tsx']
 });
 

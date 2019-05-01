@@ -1,13 +1,10 @@
-const autoprefixer = require('autoprefixer');
 const path = require('path');
 const webpack = require('webpack');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const { ReactLoadablePlugin } = require('react-loadable/webpack');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const fg = require('fast-glob');
 
 const { getAppEnv } = require('./env');
@@ -28,10 +25,6 @@ const entryFiles = fg.sync(path.join(javascriptSrcPath, entryPointsGlobPattern))
 module.exports = {
     mode: 'production',
     devtool: 'source-map',
-    // entry: {
-    //   polyfills: resolvePath('../src/polyfills.js'),
-    //   main: resolvePath('../src/index.js')
-    // },
     entry: (function() {
         const entry = {};
 
@@ -79,58 +72,6 @@ module.exports = {
                 options: {
                     compact: true
                 }
-            },
-            {
-                test: /\.s?css$/,
-                exclude: [resolvePath('../src/styles')],
-                use: [
-                    MiniCssExtractPlugin.loader,
-                    {
-                        loader: 'css-loader',
-                        options: {
-                            modules: true,
-                            camelCase: true
-                        }
-                    },
-                    {
-                        loader: 'postcss-loader',
-                        options: {
-                            ident: 'postcss',
-                            plugins: () => [
-                                require('postcss-flexbugs-fixes'),
-                                autoprefixer({
-                                    browsers: ['last 2 versions', 'not ie < 11'],
-                                    flexbox: 'no-2009'
-                                })
-                            ]
-                        }
-                    },
-                    'sass-loader',
-                    'import-glob-loader'
-                ]
-            },
-            {
-                test: /\.s?css$/,
-                include: [resolvePath('../src/styles')],
-                use: [
-                    MiniCssExtractPlugin.loader,
-                    'css-loader',
-                    {
-                        loader: 'postcss-loader',
-                        options: {
-                            ident: 'postcss',
-                            plugins: () => [
-                                require('postcss-flexbugs-fixes'),
-                                autoprefixer({
-                                    browsers: ['last 2 versions', 'not ie < 11'],
-                                    flexbox: 'no-2009'
-                                })
-                            ]
-                        }
-                    },
-                    'sass-loader',
-                    'import-glob-loader'
-                ]
             }
         ]
     },
@@ -147,17 +88,13 @@ module.exports = {
                         comments: false
                     }
                 }
-            }),
-            new OptimizeCSSAssetsPlugin({})
+            })
         ]
     },
     plugins: [
         new webpack.DefinePlugin(env.forWebpackDefinePlugin),
         new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
         new LodashModuleReplacementPlugin(),
-        new MiniCssExtractPlugin({
-            filename: 'static/css/[name].[contenthash:8].css'
-        }),
         new ManifestPlugin({
             fileName: 'asset-manifest.json'
         }),

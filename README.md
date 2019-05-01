@@ -4,36 +4,36 @@ Tools like [create-react-app](https://github.com/facebook/create-react-app) have
 
 **What's included:**
 
-- Server-side rendering with code splitting (via the excellent [React Loadable](https://github.com/thejameskyle/react-loadable) package)
-- Redux (with server-side data fetching/store population)
-- React Router
-- Conditionally load pollyfills -- only ship bloat to outdated browsers
-- React Helmet for dynamic manipulation of the document `<head />`
-- Dev server with hot reloading styles
-- Jest and Enzyme config ready to test the crap out of some stuff
-- CSS Modules, Sass, and autoprefixer
-- Run-time environment variables
-- Node.js clusters for improved performance under load (in production)
-- Prettier and ESLint run on commit
-- Docker-ized for production like a bawsss
+-   Server-side rendering with code splitting (via the excellent [React Loadable](https://github.com/thejameskyle/react-loadable) package)
+-   Redux (with server-side data fetching/store population)
+-   React Router
+-   Conditionally load pollyfills -- only ship bloat to outdated browsers
+-   React Helmet for dynamic manipulation of the document `<head />`
+-   Dev server with hot reloading styles
+-   Jest and Enzyme config ready to test the crap out of some stuff
+-   CSS in JS
+-   Run-time environment variables
+-   Node.js clusters for improved performance under load (in production)
+-   Prettier and ESLint run on commit
+-   Docker-ized for production like a bawsss
 
 ## Initial setup
 
-- `npm install`
+-   `npm install`
 
 ## Development
 
-- `npm start`
-  - Start the dev server at [http://localhost:3000](http://localhost:3000)
-- `npm test`
-  - Start `jest` in watch mode
+-   `npm start`
+    -   Start the dev server at [http://localhost:3000](http://localhost:3000)
+-   `npm test`
+    -   Start `jest` in watch mode
 
 ## Production
 
-- `npm run build && npm run start:prod`
-  - Bundle the JS and fire up the Express server for production
-- `npm run docker`
-  - Build and start a local Docker image in production mode (mostly useful for debugging)
+-   `npm run build && npm run start:prod`
+    -   Bundle the JS and fire up the Express server for production
+-   `npm run docker`
+    -   Build and start a local Docker image in production mode (mostly useful for debugging)
 
 ## General architecture
 
@@ -59,17 +59,17 @@ Sometimes you'll want to make API calls on the server to fetch data **before** r
 
 ## Current Quirks
 
-- **DO NOT UPDATE TO `webpack v4.29.4`, it looks like there might be a problem between it and `react-loadable`.**
-- This project does not have a webpack configuration that allows for the use of `url-loader` or `file-loader` (so no `import src from 'my-img.svg'`). Instead it relies on serving static assets via the `public/` directory. See `src/components/about/About.js` for a reference on how to work with assets in your app see.
-- CSS modules are disabled for any files inside `src/styles` -- use this directory for global styles instead. This is set in the webpack config files, so start there if you'd like to change anything.
-- All routes should be defined in their normal `react-router` fashion. However, any routes that need to have data fetched before rendering (on the server) need some extra configuration inside `sever/fetchDataForRender` (in the `ROUTES_THAT_FETCH_DATA` array).
+-   **DO NOT UPDATE TO `webpack v4.29.4`, it looks like there might be a problem between it and `react-loadable`.**
+-   This project does not have a webpack configuration that allows for the use of `url-loader` or `file-loader` (so no `import src from 'my-img.svg'`). Instead it relies on serving static assets via the `public/` directory. See `src/components/about/About.js` for a reference on how to work with assets in your app see.
+-   CSS modules are disabled for any files inside `src/styles` -- use this directory for global styles instead. This is set in the webpack config files, so start there if you'd like to change anything.
+-   All routes should be defined in their normal `react-router` fashion. However, any routes that need to have data fetched before rendering (on the server) need some extra configuration inside `sever/fetchDataForRender` (in the `ROUTES_THAT_FETCH_DATA` array).
 
 ## Roadmap
 
-- [ ] Run server via webpack in dev mode so we can use more loaders
-- [ ] Intelligently resolve CSS modules by looking for a `.module.s?css` file extension
-- [ ] Add example app that handles authentication
-- [ ] Migrate to `react-testing-library` instead of `enzyme`
+-   [ ] Run server via webpack in dev mode so we can use more loaders
+-   [ ] Intelligently resolve CSS modules by looking for a `.module.s?css` file extension
+-   [ ] Add example app that handles authentication
+-   [ ] Migrate to `react-testing-library` instead of `enzyme`
 
 ## `cj-scripts`
 
